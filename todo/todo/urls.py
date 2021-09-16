@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from  todoapp.views import  homepage, create , edit
+from  todoapp.views import  delete, homepage, create , edit
 
 
 
@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", homepage, name='homepage'),
     path('create/',create, name="create" ),
-    path('edit/<int:id>', edit, name='edit')
+    path('edit/<int:id>', edit, name='edit'),
+    path('delete/<int:id>', delete, name="delete")
 ]

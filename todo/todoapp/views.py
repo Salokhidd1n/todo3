@@ -30,3 +30,12 @@ def edit(request, id):
 
     except  Todo.DoesNotExist:
         return HttpResponseNotFound('<h1>Задача не нейдена</h1>')
+#Удаление данных мз ДНб
+
+def delete(request, id):
+    try:
+        todo= Todo.objects.get(id=id)
+        todo.delete()
+        return HttpResponseRedirect('/')
+    except Todo.DoesNotExist:
+        return HttpResponseNotFound("<h2>Задача не нейдена</h2>")
