@@ -44,25 +44,25 @@
 </svg></div>
         </div>
     </div>
-    <form action="create/" method="POST">
+    <form method="POST">
         {% csrf_token %}
         <label>Название задачи:</label>
-        <input type="text" name="title">
+        <input type="text" name="title" value="{{todo.title}}">
             <br>
         <label>Описание задачи:</label>
-        <input  type="text" name="description">
+        <input value="{{todo.description}}"  type="text" name="description">
 
-        <button  class="btn btn-warning" type="submit" value="Сохранить">Сохранить</button>
-                 <!-- <button  class="btn btn-dark" type="submit" value="Назад">НАЗАД</button> -->
-
+        <input  class="btn btn-warning" type="submit" name='Сохранить' value="Сохранить">
+        
+         <button  class="btn btn-dark" value="Назад">НАЗАД</button>
     </form>
 
 {% if todos.count > 0 %}
 <span>Список Всех дел:</span>
 <table class="table">
-    <tr><th>ID</th><th>Название</th><th>Описание</th><th>Дата</th><th>  Изменить</th></tr>
+    <tr><th>ID</th><th>Название</th><th>Описание</th><th>Дата</th><th>Изменить</th></tr>
     {%for todo in todos%}
-    <tr><td>{{todo.id}}</td><td>{{todo.title}}</td><td>{{todo.description}}</td><td>{{todo.created_at}}</td><td><a href="edit/{{todo.id}}">Изменить</a></td></tr>
+    <tr><td>{{todo.id}}</td><td>{{todo.title}}</td><td>{{todo.description}}</td><td>{{todo.created_at}}</td><td><a href="edit{{todo.id}}" ></a></td></tr>
     {% endfor %}
 </table>
 {% endif %}
